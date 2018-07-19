@@ -1,6 +1,7 @@
 from collections import defaultdict, namedtuple, Counter, deque
 import csv
 import random
+import numpy
 from urllib.request import urlretrieve
 
 #FIX PARA EL ERROR DE CERTIFICADO SSL
@@ -36,7 +37,7 @@ def get_movies_by_director(data=movies_csv):
 directors = get_movies_by_director()
 
 
-print(directors)
+#print(directors)
 
 def dir_movie_chart(directors):
     for d in directors:
@@ -47,8 +48,8 @@ def dir_movie_chart(directors):
             final_avg = float(avg_score / len(m), 1)
         return final_avg
 
-pezon = dir_movie_chart(directors)
-print(pezon)
+#pezon = dir_movie_chart(directors)
+#print(pezon)
 
 
 cnt = Counter()
@@ -75,11 +76,23 @@ def get_target_movies(array):
     return target_movies
 
 target_movies_list = get_target_movies(directors_list)
-#print(target_movies_list[1])
+#print(target_movies_list)
 
-#for m in target_movies_list:
-    #for data in m:
-        #print(data.title)
+def get_highest_rated_directors(directors):
+    for x, v in directors.items():
+        final_score = 0
+        partial_score = 0
+        for s in v:
+            #if s.year < 1960:
+             #   v.pop[s]
+            partial_score = partial_score + s.score
+            final_score = numpy.average(partial_score)
+        print(final_score)
+
+
+test = get_highest_rated_directors(directors)
+print(test)
+
 
 
 
