@@ -1,6 +1,20 @@
+from gamez import Roll, Player
+
+
 def main():
     game_header()
-    game_loop()
+
+    rock = Roll('rock')
+    paper = Roll('paper')
+    scissors = Roll('scissors')
+
+    rolls = [rock, paper, scissors]
+    name = input('Please type your name: ')
+
+    player1 = name
+    player2 = Player('NPC')
+
+    game_loop(rolls, player1, player2)
 
 def game_header():
     print('----------------------------------')
@@ -8,16 +22,20 @@ def game_header():
     print('----------------------------------')
     print()
 
-def game_loop():
+def game_loop(rolls, player1, player2):
 
-    while True:
+    count = 1
+    while count < 3:
+        p2_roll = Player.computer_roll(rolls)
+        p1_roll = Player.player_roll()
 
-        if win or exit:
-            break
+        veredict = Roll.roll_combat(p1_roll, p2_roll)
+
+        print(f'The veredict is {veredict}')
+
+        count += 1
 
 
-user_name = input('Please type your name: ')
-print(f'Hi {user_name}!')
-
-user_choice = input('Choose [R]ock, [P]aper or [S]cissors!')
+if __name__ == '__main__':
+    main()
 
