@@ -1,4 +1,4 @@
-from gamez import Roll, Player
+from classes import Roll, Player
 
 
 def main():
