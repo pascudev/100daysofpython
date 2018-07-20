@@ -12,6 +12,8 @@ class Roll:
             return True
         elif roll_one == 'scissors' and roll_two == 'paper':
             return True
+        elif roll_one == roll_two:
+            return 'Tie'
         else:
             return False
 
@@ -26,8 +28,8 @@ class Player:
 
     def computer_roll(self, rolls):
         random_roll = random.choice(rolls)
-        return random_roll
+        return random_roll.name
 
     def player_roll(self):
-        my_roll = input('Type Rock, Paper or Scissors!')
+        my_roll = input('Type Rock, Paper or Scissors! ')
         return my_roll.lower()
